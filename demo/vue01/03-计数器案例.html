@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<h2>当前计数:{{conter}}</h2>
+			<!-- <button type="button" v-on:click="conter++">+</button>
+			<button type="button" v-on:click="conter--">-</button> -->
+			
+			<button type="button" v-on:click="add">+</button>
+			<button type="button" @click="sub">-</button>
+		</div>
+		
+		<script src="../../js/vue.js"></script>
+		<script type="text/javascript">
+			const app = new Vue ({
+				el:'#app',
+				data: {
+					conter: 0,
+					
+				},
+				methods: {
+					add: function () {
+						this.conter++;
+						console.log('add执行');
+					},
+					sub: function () {
+						this.conter--;
+						console.log('sub执行');
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

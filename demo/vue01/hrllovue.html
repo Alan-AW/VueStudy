@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			{{message}}
+			<h2>{{name}}</h2>
+		</div>
+
+		<script src="../../js/vue.js"></script>
+		<script type="text/javascript">
+			// es6语法中let(变量)const(常量)
+			// 声名式编程与原生js命令式编程不一样。
+			const app = new Vue({
+				el: '#app', // 挂载要管理的元素-管理这个元素
+				data: { // 定义数据
+					message: '你好Vue',
+					name: 'haha'
+				}
+			})
+		</script>
+	</body>
+</html>
