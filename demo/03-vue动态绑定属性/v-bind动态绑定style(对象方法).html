@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>动态绑定style</title>
+		<!-- 开发环境vue -->
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+		<!-- 生产环境vue -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script> -->
+	</head>
+	<body>
+		<!-- 一、动态绑定style对象语法 -->
+		<h2 :style="{key(css属性名): value(属性值)}"></h2>
+		<!-- 注意：属性值必须要加上引号，否则就会当成一个变量进行解析 -->
+		
+		<div id="movie">
+			<ul>
+				<li v-for="name, item in movies" :style="{color: finalColor, fontSize:finalSize}">{{name}}</li>
+			</ul>
+		</div>
+
+		<script type="text/javascript">
+			const app = new Vue({
+				el: '#movie',
+				data: {
+					movies: ['天空之城', '千与千寻', '红猪', '悬崖上的金鱼菇凉', '猫和老鼠'],
+					isActive: true,
+					finalSize: '30px',
+					finalColor: 'skyblue',
+				},
+				methods: {
+					
+				}
+			})
+		</script>
+	</body>
+</html>

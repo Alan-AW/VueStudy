@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Vue其他指令操作</title>
+	</head>
+	<body>
+		<script src="../../js/vue.js"></script>
+		<!-- 一、v-once：当APP对象中的数据发生改变的时候HTML中的文本不会同步改变 -->
+		<h2 id="app1" v-once>{{message}}</h2>
+		<script type="text/javascript">
+			const app1 = new Vue({
+				el: '#app1',
+				data: {
+					message: 'haha',					
+				}
+			})
+		</script>
+		
+		<!-- 二、v-html：当服务器返回了一个包含html标签的字符串时，在dom中写上该指令
+						便会自动解析字符串为HTML标签然后展示到页面中。-->		 
+		<h2 id="app2" v-html="url"></h2>
+		<script type="text/javascript">
+			const app2 = new Vue({
+				el: '#app2',
+				data: {
+					url: '<a href="www.missyouc.cn">花有重开日，人无再少年。</a>',					
+				}
+			})
+		</script>
+		
+		<!-- 三、v-text：可以不用Mustache语法在标签中插入内容，直接在标签内使用。
+		注意：会替换掉标签中的文本内容 -->
+		<h2 id="app3" v-text="message">这个文本会被替换</h2>
+		<script type="text/javascript">
+			const app3 = new Vue({
+				el: '#app3',
+				data: {
+					message: '花有重开日，人无再少年。',					
+				}
+			})
+		</script>
+		
+		<!-- 四、v-pre：禁止解析vue标记语法，对HTML中的文本不做修改 -->
+		<h2 id="app4" v-pre>{{do not show message}}</h2>
+		<script type="text/javascript">
+			const app4 = new Vue({
+				el: '#app4',
+				data: {
+					message: '不做任何解析',
+				}
+			})
+		</script>
+		
+		<!-- 五、v-clock：“斗篷” 了解即可；如果vue在解析的过程中出现了卡顿，会造成页面的闪动。
+						通过设置该属性可以避免页面的闪动效果，或者看到未解析之前的文本内容。
+						其原理是vue在解析该HTML标签之前它具有这个属性，
+						此时可以通过css属性选择器将其设置为不显示：display: none;，
+						当vue解析过后又会将该属性删除，避免了页面的闪动效果。类似延迟执行。
+		 -->
+		 <style>
+			[v-cloak] {
+				display: none;
+			}
+		 </style>
+		<h2 id="app5" v-cloak>{{message}}</h2>
+		<script type="text/javascript">
+			const app5 = new Vue({
+				el: '#app5',
+				data: {
+					message: '延迟执行',
+				}
+			})
+		</script>
+	</body>
+</html>

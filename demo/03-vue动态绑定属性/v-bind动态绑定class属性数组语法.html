@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>v-bind动态绑定class属性数组语法</title>
+		<!-- 开发环境vue -->
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+		<!-- 生产环境vue -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script> -->
+	</head>
+	<body>
+		<div id="app">
+			<h3>打开F12查看两个h2标签的class属性是否一致</h3>
+			<!-- 方法一、直接写一个数组 -->
+			<h2 :class="getClasses()">{{message1}}</h2>
+			
+			<!-- 方法二、绑定成一个methods -->
+			<h2 :class="[active, line]">{{message2}}</h2>
+		</div>
+		
+		<script type="text/javascript">
+			const app = new Vue({
+				el: '#app',
+				data: {
+					message1: '直接写数组',
+					message2: '绑定methods',
+					active: 'aaa',
+					line: 'bbb',
+				},
+				methods: {
+					getClasses: function () {
+						return [this.active, this.line]
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

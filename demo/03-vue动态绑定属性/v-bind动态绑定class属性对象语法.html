@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>v-bind动态绑定class属性一</title>
+		<style type="text/css">
+			.active {
+				color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- 绑定class属性常规方法 -->
+		<h2 class="active">常规方法绑定class属性</h2>
+		
+		<!-- vue动态绑定class属性 -->
+		<h2 v-bind:class="{key1: value1, key2: value2}">{{message}}</h2>
+		
+		<!-- vue对象语法绑定class属性语法：一个大括号表示是一个对象,通过内置函数进行操作boolean值使其动态的拥有或者删除某个class属性 -->
+		<h2 class="{类1: boolean, 类2： boolean}">{{message}}</h2>
+		
+		<!-- 案例：点击按钮改变class属性，配合css样式表改变文本颜色 -->
+		<div id="app">
+			<h2 class="title" :class="{active: isActive, link: isLink}">动态绑定属性：{{message}}</h2>
+			<h2 class="title" :class="getColor()">动态绑定属性：{{message}}</h2>
+			<button type="button" @click="changeColor">click me</button>
+		</div>
+		
+		<script src="../../js/vue.js"></script>
+		<script>
+			const app = new Vue({
+				el: '#app',
+				data: {
+					message: '改变颜色',
+					isActive: true,
+					isLink: true,
+				},
+				methods: {
+					changeColor: function () {
+						this.isActive = !this.isActive;
+					},
+					getColor: function () {
+						return {active: this.isActive, link: this.isLink}
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

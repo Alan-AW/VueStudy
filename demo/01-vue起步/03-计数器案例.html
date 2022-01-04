@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title></title>
+		<title>Vue计数器案例</title>
 	</head>
 	<body>
 		<div id="app">
@@ -20,7 +20,6 @@
 				el:'#app',
 				data: {
 					conter: 0,
-					
 				},
 				methods: {
 					add: function () {
@@ -29,8 +28,22 @@
 					},
 					sub: function () {
 						this.conter--;
+						if(this.conter <= 0){
+							this.conter = 0;
+						}
 						console.log('sub执行');
 					}
+				},
+				// 生命周期函数，一般就这两个用的比较多
+				beforeCreate() {
+					
+				}
+				created() {
+					// 一般用于发送网络请求，将请求到的数据赋值给data
+					console.log('执行created');
+				},
+				mounted() {
+					console.log('执行mounted');
 				}
 			})
 		</script>
