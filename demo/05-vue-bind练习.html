@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- 开发环境vue -->
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+		<!-- 生产环境vue -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script> -->
+	</head>
+	<body>
+	<div id="app">
+		<ul>
+			<li v-for="name, id in movies" @click="getClass(id)">{{name}}</li>
+		</ul>
+	</div>
+	
+	
+		<script type="text/javascript">
+			const app = new Vue({
+				el: '#app',
+				data: {
+					movies: ['我不是药神', '红猪', '天空之城', '千与千寻'],
+					isActive: true,
+				},
+				methods: {
+					getClass: function (data) {
+						console.log(data);
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

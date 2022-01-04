@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>计算属性的基本使用</title>
+		<!-- 开发环境vue -->
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+		<!-- 生产环境vue -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script> -->
+	</head>
+	<body>
+		<!-- 实现两个数据的拼接 -->
+
+		<!-- 方式一、直接写 -->
+		<!-- <div id="app">
+			<h2>{{firstName + ' ' + lastName}}</h2>
+			<h2>{{firstName}}  {{lastName}}</h2>
+		</div> -->
+
+		<!-- 高级方式 -->
+		<!-- <div id="app">
+			<h2>{{getProName()}}</h2>
+		</div> -->
+
+		<!-- 计算属性方式 -->
+		<div id="app">
+			<h2>{{fullName}}</h2>
+		</div>
+
+		<!-- 计算总价案例 -->
+		<div id="total">
+			<h2>书本总价：{{totalPrice}}</h2>
+		</div>
+
+		<script type="text/javascript">
+			// 计算属性方法
+			const app = new Vue({
+				el: '#app',
+				data: {
+					firstName: 'Xmj',
+					lastName: 'Xxj',
+				},
+				// computed -- 计算属性,用来定义函数.
+				// ！！！！！！！！注意：该方法是具有缓存的，全局只会调用一次；比直接定义methods来得更快！！！！！！！！！
+				computed: {
+					fullName: function() {
+						return this.firstName + this.lastName;
+					}
+				},
+				methods: {
+					getProName: function() {
+						return this.firstName + this.lastName;
+					}
+				},
+
+			});
+
+			// 计算总价案例
+			const price = new Vue({
+				el: "#total",
+				data: {
+					books: [{
+							name: 'Unix编程艺术',
+							price: 150
+						},
+						{
+							name: '代码大全',
+							price: 120
+						},
+						{
+							name: '深入理解计算机原理',
+							price: 130
+						},
+						{
+							name: '现代操作系统',
+							price: 180
+						}
+					]
+				},
+				computed: {
+					totalPrice: function() {
+						let all = 0;
+						for (let i = 0; i < this.books.length; i++) {
+							all += this.books[i].price;
+						}
+						
+						// es6的两种不同的循环语法
+						let all = 0;
+						for (let book in this.books) {
+							all += this.books[book].price;
+						};
+						
+						// 这种写法类似python的for循环，直接拿到的就是每个对象
+						let all = 0;
+						for (book of this.books) {
+							all += book.price;
+						};
+						return all;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

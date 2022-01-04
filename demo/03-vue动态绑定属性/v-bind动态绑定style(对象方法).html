@@ -12,14 +12,19 @@
 		<!-- 一、动态绑定style对象语法 -->
 		<h2 :style="{key(css属性名): value(属性值)}"></h2>
 		<!-- 注意：属性值必须要加上引号，否则就会当成一个变量进行解析 -->
-		
+
 		<div id="movie">
+			<h3>对象语法</h3>
 			<ul>
 				<li v-for="name, item in movies" :style="{color: finalColor, fontSize:finalSize}">{{name}}</li>
 			</ul>
 		</div>
 
+		<!-- 二、动态绑定style数组语法 -->
+		<h2 id="app" :style="[baseStyle, colorStyle]">style</h2>
+
 		<script type="text/javascript">
+		// 对象vue
 			const app = new Vue({
 				el: '#movie',
 				data: {
@@ -28,8 +33,14 @@
 					finalSize: '30px',
 					finalColor: 'skyblue',
 				},
-				methods: {
-					
+			});
+			
+			// 数组vue
+			const app2 = new Vue({
+				el: '#app',
+				data: {
+					baseStyle: {color: 'skyblue'},
+					colorStyle: {fontSize: '30px'},
 				}
 			})
 		</script>
