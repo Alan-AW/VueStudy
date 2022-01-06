@@ -10,7 +10,7 @@
 	</head>
 	<body>
 		<div id="app">
-			<h2>{{}}</h2>
+			<h2>{{fullName}}</h2>
 		</div>
 
 
@@ -21,14 +21,30 @@
 					firstName: 'xxj',
 					lastName: 'xmj',
 				},
-				methods: {
-					name: function() {
-						
-					}
-				},
+				// 计算属性的完整写法：
 				computed: {
-
-				}
+					fullName: {
+						set: function(newName) {
+							names = newName.split(' ');
+							this.firstName = names[0];
+							this.lastName = names[1];
+						},
+						get: function() {
+							return this.firstName + this.lastName;
+						},
+					},
+				},
+				/*  
+					set方法：可以手动设置当前属性的值，需要接收参数，Vue会将修改的参数传递到这个方法中；
+									一般是不写这个方法，让该属性变为只读属性，不可修改；
+					get方法：计算属性的本质就是get方法，这个方法返回了什么东西，那么该属性就是一个什么东西；
+					所以：一般情况下都会省略掉get方法，直接将该属性定义成一个方法：
+						computed: {
+							fullName: function () {
+								return this.firstName + lastName;
+							}
+						}
+				*/
 			})
 		</script>
 	</body>

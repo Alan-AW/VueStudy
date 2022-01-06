@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- 开发环境vue -->
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+		<!-- 生产环境vue -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script> -->
+	</head>
+	<body>
+		<!-- 实现数据拼接操作 -->
+		
+		<div id="app">
+			<!-- 第一种直接进行拼接:语法过于繁琐，不推荐！ -->
+			<h2>{{firstName}}  {{lastName}}</h2>
+			
+			<!-- 第二种调用methods:每次调用的时候，都会去执行一遍代码快，进行重新计算。性能不够高。 -->
+			<h2>{{getFullName()}}</h2>
+			<h2>{{getFullName()}}</h2>
+			<h2>{{getFullName()}}</h2>
+			
+			<!-- 第三种使用computed计算属性，每次调用的时候，Vue会检测一下属性中的变量有没有变化，
+						如果没有变化就直接将原来的结果进行了返回，不会频繁的调用，有一个缓存机制的存在，性能非常高效。
+			 -->
+			<h2>{{fullName}}</h2>
+			<h2>{{fullName}}</h2>
+			<h2>{{fullName}}</h2>
+		</div>
+		
+		<script type="text/javascript">
+			const app = new Vue({
+				el: '#app',
+				data: {
+					firstName: 'xxj',
+					lastName: 'xmj'
+				},
+				methods: {
+					getFullName: function () {
+						console.log('get_function'); // 调用几次就会执行几次函数体
+						return this.firstName + this.lastName;
+					}
+				},
+				computed: {
+					fullName: function () {
+						console.log('fullName');  // 拥有缓存机制，变量没有改变直接返回原来的结果了。
+						return this.firstName + this.lastName;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

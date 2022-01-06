@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- 开发环境vue -->
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+		<!-- 生产环境vue -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script> -->
+	</head>
+	<body>
+		<div id="app">
+			<h2>{{count}}</h2>
+			<!-- 基本使用 -->
+			<button v-on:click="add"> + </button>
+			<button v-on:click="del"> - </button>
+
+			<!-- 语法糖 -->
+			<button @click="add()"> + </button>
+			<button @click="del"> - </button>
+
+			<!-- 特殊情况一 -->
+			<!-- 
+				当我们在页面上做操作的时候，浏览器会自动生成一个event事件对象。
+				在事件定义时，写函数省略了小括号，但是方法本身需要传入一个参数，这个时候Vue会默认将
+				浏览器生成的event事件对象作为参数传入到方法中。如果写了括号，但是依然没有传入参数，
+				那么这个方法接收到的参数默认为Undifind：就跟我一样找不到对象!
+				所以在定义方法的时候可以默认接收一个event对象，然后调用事件中可以不需要写上小括号和参数
+				自动的就可以获取到该事件对象。
+			 -->
+			 
+			 <!-- 特殊情况二 -->
+			 <!-- 方法定义时，需要event对象，同时需要一个其他的参数 见方法: test()
+							此时要获取event对象的话，固定写法：$event；
+							此外传参需要注意变量类型，字符串要加引号，否则要在vue对象中定义这个变量。
+				-->
+			 <button @click="test(123, $event)"> + </button>
+		</div>
+
+		<script type="text/javascript">
+			const app = new Vue({
+				el: '#app',
+				data: {
+					count: 0,
+				},
+				methods: {
+					add(event) {
+						this.count++;
+					},
+					del(event) {
+						if (this.count > 0) {
+							this.count--;
+						} else {
+							this.count = 0;
+						}
+					},
+					test(count, event) {
+						console.log(count, event);
+					},
+				}
+			})
+		</script>
+	</body>
+</html>

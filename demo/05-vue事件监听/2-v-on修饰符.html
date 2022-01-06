@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- 开发环境vue -->
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+		<!-- 生产环境vue -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script> -->
+	</head>
+	<body>
+		<!-- 一、.stop修饰符 -->
+		<!-- 如果一个挂载的元素中父元素与子元素都进行了同一个类型的监听事件
+					比如click事件，那么当子元素被点击的时候，父元素的click事件也会被触发。
+					俗称冒泡；.stop 修饰符就可以解决这个问题：
+		 -->
+
+		<div id="app">
+			<div @click="divCLick">
+				HAHAHAHAH
+				<button @click.stop="buttonClick">点击</button>
+			</div>
+		</div>
+
+
+		<!-- 二、.prevent修饰符 -->
+		<!-- 阻止默认事件的启动，比如form表单中的submit提交按钮，可以设置一个click事件的监听
+					来阻止submit按钮默认的提交动作。
+			-->
+		<form action="missyouc.cn" method="post">
+			<input type="submit" value="提交" @click.prevent="submitClick">
+		</form>
+
+		<!-- 三、监听某个键位操作 可以在@click之后点上任意一个键位名称 -->
+		<button type="button" @click.enter="keyClick">checkme</button>
+
+		<!-- 四、.once修饰符 -->
+		<!-- 只希望某个事件被监听一次。比如第一次点击有反应，后面再点击就没有反应了 -->
+		<button @click.once="oneceClick">once</button>
+
+		<script type="text/javascript">
+			const app = new Vue({
+				el: '#app',
+				data: {
+					message: '',
+				},
+				methods: {
+					// .stop修饰符
+					divClick() {
+						console.log('div');
+					},
+					buttonClick() {
+						console.log('button');
+					},
+
+					// .prevent修饰符
+					submitClick() {
+						console.log('提交按钮。');
+					},
+
+					// 监听某个按键或者键盘操作
+					keyClick() {
+						console.log('按下了enter键。');
+					},
+					
+					// 只允许回调一次
+					oneceClick() {
+						console.log('这句话只会出现一次');
+					}
+
+				}
+			})
+		</script>
+	</body>
+</html>
