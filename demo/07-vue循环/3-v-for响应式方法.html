@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- 开发环境vue -->
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+		<!-- 生产环境vue -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script> -->
+	</head>
+	<body>
+		<!--  
+			支持响应式的操作：
+				push()  		在数组最后面添加一个/多个元素
+				pop()  			删除数组中的最后一个元素
+				shift()  		删除数组中的第一个元素
+				unshift()   在数组最前面添加一个/多个元素
+				splice()  	删除、			splice(StartIndex, 删几个(含头,不传直接删掉所有且保留第一个元素))
+										插入、   	splice(StartIndex, 0, '替换内容1', '替换内容1', '替换内容n'... )
+										替换元素 	splice(StartIndex, 替换几个(含头), 参数1, 参数2, 参数n...)
+										
+				sort()  		对数组进行排序
+				reverse()   反转数组
+				
+				此外还有一个Vue内置的方法 - set(要修改的对象, 索引值, 进行替换的内容)
+				vue.set(this.arr, 0, 'zbc')
+			
+			!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+			注意：直接通过索引改变数组中的元素不触发响应式的操作，vue没有监听这种操作。
+			!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		-->
+		<script type="text/javascript">
+			const app = new Vue({
+				el: '',
+				data: {
+
+				},
+				methods: {
+
+				}
+			});
+		</script>
+	</body>
+</html>

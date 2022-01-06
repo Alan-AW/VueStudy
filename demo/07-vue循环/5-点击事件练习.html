@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- 开发环境vue -->
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+		<!-- 生产环境vue -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script> -->
+		<style type="text/css">
+			li {
+				list-style: none;
+			}
+			.active {
+				color: #FF0000;
+				background-color: aqua;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<ul>
+				<li v-for="name, id in movies" :class="{active: currentIndex === id}" @click="getClass(id)">{{name}}</li>
+			</ul>
+		</div>
+
+
+		<script type="text/javascript">
+			const app = new Vue({
+				el: '#app',
+				data: {
+					currentIndex: 0,
+					movies: ['我不是药神', '红猪', '天空之城', '千与千寻'],
+				},
+				methods: {
+					getClass: function(id) {
+						this.currentIndex = id;
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

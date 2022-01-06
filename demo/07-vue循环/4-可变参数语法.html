@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>可变参数</title>
+	</head>
+	<body>
+		<script>
+			/*
+		 可变参数：定义一个方法的时候可能会需要接收很多个参数，但是数量不确定，这个时候定义这个方法接收的参数就可以写成
+		 		...aaa
+				类似python中的  *args  或  **kwargs
+		 */
+			function sum(...num) {
+				let count = 0;
+				for (let n of num) {
+					count += n;
+				}
+				alert(count);
+			}
+
+			sum(1, 2, 3, 4, 10);
+		</script>
+	</body>
+</html>

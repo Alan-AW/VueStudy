@@ -9,24 +9,27 @@
 		<!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script> -->
 	</head>
 	<body>
-	<div id="app">
-		<ul>
-			<li v-for="name, id in movies" @click="getClass(id)">{{name}}</li>
-		</ul>
-	</div>
-	
-	
+		<!-- 一般不建议直接在标签中使用这种表达式，最好是写在methods中 -->
+		<div id="app">
+			<h2 v-if="isShow">show一下</h2>
+			<h1 v-else>默认不显示我的</h1>
+			
+			
+			<h3 v-if="cout<50">小于50</h3>
+			<h3 v-else-if="cout > 50">大于50</h3>
+			<h3 v-else>刚好等于50</h3>
+		</div>
+		
 		<script type="text/javascript">
 			const app = new Vue({
 				el: '#app',
 				data: {
-					movies: ['我不是药神', '红猪', '天空之城', '千与千寻'],
-					isActive: true,
+					message: 'hello IF',
+					isShow: true,
+					cout: 80,
 				},
 				methods: {
-					getClass: function (data) {
-						console.log(data);
-					}
+
 				}
 			});
 		</script>

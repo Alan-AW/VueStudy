@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- 开发环境vue -->
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+		<!-- 生产环境vue -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script> -->
+	</head>
+	<body>
+		<!-- 用户切换登陆案例 -->
+		<div id="app">
+			<form action="" method="post">
+				<label>{{getLaber}}</label>
+				<input type="text" :placeholder="laber">
+				<input type="button" value="点击切换" @click.prevent="change">
+			</form>
+			
+			
+			
+			
+			<div v-if="default_statue">
+				<label for="username">{{getLaber}}</label>
+				<input type="text" id="username" :placeholder="laber">
+			</div>
+			
+			<div v-else>
+				<label for="email">{{getLaber}}</label>
+				<input type="text" id="email" :placeholder="laber">
+			</div>
+			<input type="button" value="点击切换" @click.prevent="default_statue = !default_statue">
+		</div>
+		
+		<!-- 问题：
+				当用户在输入到一半的时候点击了切换按钮的话，输入框中的数据并不会被清除掉。不管是在标签中使用v-if还是上面这种形式都不会清除掉内容
+				原因：
+				Vue有一个虚拟DOM，先将即将要显示在页面中的元素放入内存当中，经过虚拟DOM之后再渲染到浏览器中。
+				vue的底层在渲染这些标签元素的时候出于性能的考虑会尽可能的复用相同的元素，并不会重新渲染一个DOM。
+		 -->
+		
+		<!-- 解决办法： 
+			在相同元素中写上一个 key="" 如果key相同则表示可以复用，如果不同则表示不可复用。
+			
+			<div v-if="default_statue">
+				<label for="username">{{getLaber}}</label>
+				<input type="text" id="username" :placeholder="laber" key="username">
+			</div>
+			
+			<div v-else>
+				<label for="email">{{getLaber}}</label>
+				<input type="text" id="email" :placeholder="laber" key="email">
+			</div>
+		 -->
+		 
+		 
+		
+		
+		<script type="text/javascript">
+			const app = new Vue({
+				el: '#app',
+				data: {
+					default_statue: true,
+					laber: '',
+				},
+				methods: {
+					change() {
+						this.default_statue = !this.default_statue;
+					},
+				},
+				computed: {
+					getLaber() {
+						if (this.default_statue) {
+							this.laber = '邮箱登陆';
+						} else {
+							this.laber = '用户名登陆';
+						}
+						return this.laber;
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

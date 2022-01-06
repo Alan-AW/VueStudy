@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- 开发环境vue -->
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+		<!-- 生产环境vue -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script> -->
+		<style>
+			li {
+				list-style: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 遍历数组 -->
+			<ul>
+				<li v-for="(item, index) in movies">{{index+1}}:{{item}}</li>
+			</ul>
+			
+			<!-- 遍历对象 -->
+			<!-- 
+			 在遍历对象的时候如果只是获取一个值，那么获取到的只是value，
+			 在对象中value更重要，所以获取value和key要将value写在前面
+			 -->
+			<ul>
+				<li v-for="value, key, index in info">{{index+1}}--》{{key}}:{{value}}</li>
+			</ul>
+		</div>
+
+		<script type="text/javascript">
+			const app = new Vue({
+				el: '#app',
+				data: {
+					movies: ['我不是药神', '红猪', '天空之城', '千与千寻'],
+					info: {
+						name: 'xmj',
+						age: 18,
+						msg: 'love you',
+					}
+				},
+				methods: {
+
+				}
+			});
+		</script>
+	</body>
+</html>

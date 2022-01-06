@@ -16,7 +16,7 @@
 		 -->
 
 		<div id="app">
-			<div @click="divCLick">
+			<div @click="divClick">
 				HAHAHAHAH
 				<button @click.stop="buttonClick">点击</button>
 			</div>
@@ -25,18 +25,22 @@
 
 		<!-- 二、.prevent修饰符 -->
 		<!-- 阻止默认事件的启动，比如form表单中的submit提交按钮，可以设置一个click事件的监听
-					来阻止submit按钮默认的提交动作。
+					来阻止submit按钮默认的提交动作。###也可以不写方法###
 			-->
 		<form action="missyouc.cn" method="post">
-			<input type="submit" value="提交" @click.prevent="submitClick">
+			<input type="submit" value="提交" @submit.prevent="submitClick">
 		</form>
 
-		<!-- 三、监听某个键位操作 可以在@click之后点上任意一个键位名称 -->
-		<button type="button" @click.enter="keyClick">checkme</button>
+		<!-- 三、监听某个键位操作 可以在@keyup/keydown之后点上任意一个键位别名或者键代码 -->
+		<button type="button" @keyup.enter="keyClick">键别名</button>
+		<button type="button" @keyup.13="keyClick">键代码</button>
 
 		<!-- 四、.once修饰符 -->
 		<!-- 只希望某个事件被监听一次。比如第一次点击有反应，后面再点击就没有反应了 -->
 		<button @click.once="oneceClick">once</button>
+		
+		<!-- 五、串联修饰符 -->
+		<button @click.stop.prevent="doThis"></button>
 
 		<script type="text/javascript">
 			const app = new Vue({
@@ -66,8 +70,12 @@
 					// 只允许回调一次
 					oneceClick() {
 						console.log('这句话只会出现一次');
+					},
+					
+					// 串联修饰符
+					doThis() {
+						console.log('串联修饰符');
 					}
-
 				}
 			})
 		</script>

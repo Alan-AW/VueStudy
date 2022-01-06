@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- 开发环境vue -->
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+		<!-- 生产环境vue -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script> -->
+	</head>
+	<body>
+		<div id="app">
+			<!-- 常规遍历数组 -->
+			<ul>
+				<li v-for="item in movies">{{item}}</li>
+			</ul>
+			<!-- 
+				此时页面中已经渲染了4个li元素，如果movies中的数据发生了修改，在某个位置插入了一个新的元素，
+					那么此时vue底层的虚拟DOM再次进行渲染的时候会调用一个different算法（diff算法）,去查看新元素与已经渲染
+					的元素之间的差异。如果没有差异，直接渲染缓存中的标签，如果有差异，那么会将计算出来的不同的元素重新生成。
+					然后插入到指定的位置。
+				在没有绑定key的时候他底层的替换规则是依次替换：比如要在第二个位置新插入一个元素，那么他会在第二个位置重新生成
+					一个新的元素，与要保存的值，然后将第二个元素往后的所有元素与其对应的值往后进行替换：
+					
+							原始数据										替换之后
+					li-1 		我不是药神						li-1 		我不是药神
+          li-2 		红猪  							li-2 		新插入的数据
+					li-3 		天空之城 						li-3 		红猪
+					li-4 		千与千寻            li-4 		天空之城
+					                            li-5 		千与千寻
+					可以看出原来的对应关系由于这次插入，新值后面的所有对应关系都已经被改变了，如果这里有大量数据的话，程序去这样替换
+					会非常消耗资源，性能低下。
+			 -->
+
+
+
+
+			<!-- 解决办法：绑定一个与当前元素 !!! 具有对应关系 !!! 的key -->
+			<!-- 使用key给每一个节点添加一个唯一标识，diff算法就可以正确的识别该节点是否需要替换，然后找到正确的位置插入新的节点 -->
+			<!-- 注意：
+							一定要将key绑定成唯一对应关系的变量，不要使用下标index，没有任何意义。DOM结构改变之后index也会随之改变的。
+				-->
+			<ul>
+				<li v-for="item in movies" :key="item">{{item}}</li>
+			</ul>
+
+			<!-- 添加内容事件 -->
+			<p><button @click="splacies">点击添加</button></p>
+		</div>
+		<script type="text/javascript">
+			const app = new Vue({
+				el: '#app',
+				data: {
+					movies: ['我不是药神', '红猪', '天空之城', '千与千寻'],
+				},
+				methods: {
+					splacies() {
+						// 插入下标位置，要删除几个元素， 插入内容
+						this.movies.splice(1, 0, '新插入的一个电影');
+					}
+				},
+			});
+		</script>
+	</body>
+</html>
