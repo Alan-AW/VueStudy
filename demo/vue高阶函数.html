@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>高阶函数</title>
+		<!-- 开发环境vue -->
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+		<!-- 生产环境vue -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script> -->
+	</head>
+	<body>
+
+		<script type="text/javascript">
+			// 1.filter函数
+			// 需求，提取出数组中小于100的数字；
+			let arr = [10, 50, 900, 30, 60, 100, 40];
+			let newArr = arr.filter(function(n) {
+				return n < 100;
+			});
+			console.log(newArr);
+
+			/*
+				filter过滤函数：在内部会自动遍历当前数组，并且每次遍历循环的时候都会将当前值传入到回调函数中
+				所以使用时需要传入一个方法，该方法必须返回一个boolean值；
+				true: 当返回true时，filter函数会将当前传入的参数添加到一个新的数组中
+				false: 当返回false，filter函数会将当前传入的参数过滤掉；
+				然后自动返回这个新的数组。所以只需要用一个参数接收即可
+			*/
+
+
+			// 2.map函数
+			// 需求将上面过滤掉的新数组中的每一项都乘以2
+			// 原理同filter；
+			let new2Arr = newArr.map(function(n) {
+				n * 2;
+			});
+			console.log(new2Arr);
+
+
+			// 3.reduce函数 -- 汇总函数
+			// 计算出map函数生成的新数组的每一项的和
+			// 作用就是对数组中所有的内容进行汇总；至少需要传入两个参数，第一个是回调函数，第二个是初始值
+			// 回调函数中第一个参数是本次循环的上一次结果，第二个参数表示奔驰循环的当前值
+			// 其内部就是一个累加操作；
+			let total = new2Arr.reduce(function(prevalue, n) {
+				return prevalue + n;
+			}, 0)
+			console.log(total);
+
+			// 函数式编程
+			let total_ = arr.filter(function(n) {
+				return n < 100;
+			}).map(function(n) {
+				return n * 2;
+			}).reduce(function(pri, n) {
+				return pri + n;
+			}, 0);
+			console.log('函数式编程结果：', total_);
+
+			// 再敲一行代码
+			let _total_ = arr.filter(n => n < 100).map(n => n * 2).reduce((pri, n) => pri + n);
+			console.log('一行代码结果：', _total_);
+		</script>
+	</body>
+</html>
