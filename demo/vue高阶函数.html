@@ -47,7 +47,7 @@
 			}, 0)
 			console.log(total);
 
-			// 函数式编程
+			// 高阶函数.函数式编程
 			let total_ = arr.filter(function(n) {
 				return n < 100;
 			}).map(function(n) {
@@ -55,11 +55,11 @@
 			}).reduce(function(pri, n) {
 				return pri + n;
 			}, 0);
-			console.log('函数式编程结果：', total_);
+			console.log('Higher order function：', total_);
 
 			// 再敲一行代码
 			let _total_ = arr.filter(n => n < 100).map(n => n * 2).reduce((pri, n) => pri + n);
-			console.log('一行代码结果：', _total_);
+			console.log('Arrow function：', _total_);
 		</script>
 	</body>
 </html>
