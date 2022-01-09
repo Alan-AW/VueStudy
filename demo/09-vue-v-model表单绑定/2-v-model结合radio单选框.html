@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- 开发环境vue -->
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+		<!-- 生产环境vue -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script> -->
+	</head>
+	<body>
+		<div id="app">
+			<form action="" method="">
+				<!-- 使用v-model双向绑定radio的时候要达到互斥效果可以设置为同一个值，
+				或者不绑定同一个值，手动加上相同的name属性即可达到互斥效果 -->
+				<label for="sex"><input type="radio" value="男" id="man" v-model="sex"/>男</label>
+				<label for="sex"><input type="radio" value="女" id="woman" v-model="sex">女</label>
+				<p>你的性别是：{{sex}}</p>
+			</form>
+
+		</div>
+
+		<script type="text/javascript">
+			const app = new Vue({
+				el: '#app',
+				data: {
+					sex: '男',
+				},
+				methods: {
+
+				}
+			});
+		</script>
+	</body>
+</html>

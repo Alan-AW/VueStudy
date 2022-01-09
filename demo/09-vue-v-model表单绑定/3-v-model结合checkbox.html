@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- 开发环境vue -->
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+		<!-- 生产环境vue -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script> -->
+	</head>
+	<body>
+		<div id="app">
+			<!-- 单选框 -->
+			<label for="agree">
+				<input type="checkbox" id="agree" v-model="isagree" />同意网络协议
+			</label>
+			<p>{{isagree}}</p>
+			<button type="button" :disabled="!isagree">下一步</button>
+
+			<!-- 多选框 -->
+			<div>
+				<input type="checkbox" value="篮球" v-model="hobbies"/>篮球
+				<input type="checkbox" value="足球" v-model="hobbies">足球
+				<input type="checkbox" value="羽毛球" v-model="hobbies"/>羽毛球
+				<input type="checkbox" value="乒乓球" v-model="hobbies"/>乒乓球
+				<p>选择的爱好有：{{hobbies}}</p>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			const app = new Vue({
+				el: '#app',
+				data: {
+					isagree: false,
+					hobbies: [],
+				},
+				methods: {
+
+				}
+			});
+		</script>
+	</body>
+</html>
