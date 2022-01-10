@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- 开发环境vue -->
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+		<!-- 生产环境vue -->
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+	</head>
+	<body>
+		<!-- 语法糖局部注册 -->
+		<div id="app">
+			<cpn></cpn>
+			<cpnn></cpnn>
+		</div>
+
+		<script type="text/javascript">
+			// 全局注册
+			Vue.component('cpnn', {
+				template: `<h1>全局标题内容</h1>`,
+			})
+			
+			// 局部注册
+			const app = new Vue({
+				el: '#app',
+				components: {
+					cpn: {
+						template: `<h1>局部标题内容</h1>`,
+					},
+				},
+			})
+		</script>
+	</body>
+</html>

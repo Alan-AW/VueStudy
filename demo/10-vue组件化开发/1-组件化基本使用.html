@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- 开发环境vue -->
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+		<!-- 生产环境vue -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script> -->
+	</head>
+	<body>
+		<!-- 
+		 什么是组件化？
+			人面对复杂问题的处理方式：
+				任何一个人处理信息的逻辑能力是有限的，所以对于大型复杂的逻辑问题不一定能一次性解决
+				但是人天生的能力便是拆解问题，将一个大功能拆解成很多小问题，然后再放回整体当中便实现了某些复杂的问题。
+				
+			组件化也是类似的思想：
+				如果将一个页面中的所有的逻辑全都放到一起的话，处理起来非常复杂，代码也很凌乱，且不利于后期的维护管理及扩展
+				所以组件化就是将一个页面中的所有功能拆分成一个个的组件，一个组件完成一个独立的功能，那就非常的nice了。
+				
+			组件三部曲：
+				1.创建组件构造器(模版中构建的html结构只能包含一个根标签即：用一个div包含所有的内容，不能同时并列很多标签)
+					Vue.extend()
+				2.注册组件(全局注册，局部注册)
+					Vue.component(html标签名称, 实例对象)
+				3.使用组件
+		 -->
+
+		<!-- 3.使用组件 -->
+		<div id="app">
+			<my-cpn></my-cpn>
+		</div>
+
+		<script type="text/javascript">
+			// 1.创建构造器
+			const MyComponent = Vue.extend({
+				template: `
+				<div>
+					<h1>组件标题</h1>
+					<p>组件内容</p>
+				</div>
+				`,
+			})
+
+			// 2.注册组件component(html标签名称, 实例对象);
+			Vue.component('my-cpn', MyComponent);
+
+			const app = new Vue({
+				el: '#app',
+				data: {
+					message: '',
+				},
+				methods: {
+					name: function() {
+
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

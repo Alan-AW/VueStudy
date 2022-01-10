@@ -10,16 +10,29 @@
 	</head>
 	<body>
 		<div id="app">
-			<select name="">
-				<option value=""></option>
+			<!-- 1.单选 -->
+			<select name="onlyOne" v-model="fruit">
+				<option value="apple">苹果</option>
+				<option value="bnn">香蕉</option>
+				<option value="org">橘子</option>
+				<option value ="pt">葡萄</option>
 			</select>
+			<p>单选结果：{{fruit}}</p>
+			<!-- 2.多选 -->
+			<select name="multi" v-model="fruit" multiple="multiple">
+				<option value="apple">苹果</option>
+				<option value="bnn">香蕉</option>
+				<option value="org">橘子</option>
+				<option value ="pt">葡萄</option>
+			</select>
+			<p>多选结果：{{fruit}}</p>
 		</div>
 
 		<script type="text/javascript">
 			const app = new Vue({
 				el: '#app',
 				data: {
-
+					fruit: 'apple',
 				},
 				methods: {
 

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- 开发环境vue -->
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+		<!-- 生产环境vue -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script> -->
+	</head>
+	<body>
+		<!-- what the hell is that? 官方文档中还有个值绑定的概念：这特么是个啥?
+		 v-model双向绑定的概念即：所有input选项中的value应该是
+		 动态生成的，而不是在HTML标签中写死的值。例如：
+		 
+		 <input type="checkbox" value="篮球" v-model="hobbies"/>篮球
+		 <input type="checkbox" value="足球" v-model="hobbies">足球
+		 <input type="checkbox" value="羽毛球" v-model="hobbies"/>羽毛球
+		 <input type="checkbox" value="乒乓球" v-model="hobbies"/>乒乓球 
+		
+			像上面这些value都是写死的，实际开发中应该是从服务器中获取到哪些值可以供用户选择
+					本质上就是v-bind。
+		 -->
+		<div id="app">
+			<label v-for="item, index in hobbies" :for="index">
+				<input type="checkbox" :value="item" :id="index" v-model="myhobbies">{{item}}
+			</label>
+			<p>选择结果：{{myhobbies}}</p>
+		</div>
+		
+		<script type="text/javascript">
+			const app = new Vue({
+				el: '#app',
+				data: {
+					message: '',
+					myhobbies: [],
+					hobbies: ['篮球', '足球', '羽毛球', '乒乓球', '保龄球' ],
+				},
+				methods: {
+					name: function () {
+						
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

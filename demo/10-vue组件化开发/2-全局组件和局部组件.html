@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- 开发环境vue -->
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+		<!-- 生产环境vue -->
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+	</head>
+	<body>
+		<!-- 局部组册组件
+		 在vue管理对象的APP内进行组册
+		 cpmponents: {
+			 cpn: cpnC,  // 使用组件的标签名：组件构造器对象
+		 }
+		 -->
+		<!-- 全局组件：Vue.component('cpn', cpnC); -->
+		
+		<div id="app">
+			<div>
+				<cpn></cpn>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			const cpnC = Vue.extend({
+				template: `
+			<div>
+				<h1>标题和内容</h1>
+			</div>
+			`
+			});
+			// Vue.component('cpn', cpnC);
+
+			const app = new Vue({
+				el: '#app',
+				components: {
+					cpn: cpnC,  // 使用组件的标签名：组件构造器对象
+				}
+			})
+		</script>
+	</body>
+</html>

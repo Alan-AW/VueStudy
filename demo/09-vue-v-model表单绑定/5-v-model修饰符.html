@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- 开发环境vue -->
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+		<!-- 生产环境vue -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script> -->
+	</head>
+	<body>
+		<div id="app">
+			<!-- 1.修饰符：lazy--懒加载，使用的时候才加载.
+			 所谓懒加载，在默认情况下，一旦数据发生了变化，那么data中的数据就会立即同步，
+			 使用了lazy懒加载的情况下，只有输入完成，输入框失去焦点或者敲下回车才会调用同步数据。
+			 -->
+			<input type="text" v-model.lazy="message">
+			<p>默认是没有同步数据的：{{message}}</p>
+			
+			<!-- 2.修饰符：number 默认情况下，input输入框中的数据会当作字符串类型进行解析和使用
+					当需要直接处理为数字类型的时候就可以使用number来进行修饰，直接将string转换为number类型。
+			 -->
+			<input type="text" v-model.number="age">
+			<p>{{age}}-{{typeof age}}</p>
+			
+			<!-- 3.修饰符：trim 剥离字符串中左右两边的空格 -->
+			<input type="text" v-model.trim="name">
+			<p>输入内容：{{name}}</p>
+			<p>正常情况下看不到效果，可以输入多个空格然后F12查看app.name的值</p>
+		</div>
+		
+		
+		<script type="text/javascript">
+			const app = new Vue({
+				el: '#app',
+				data: {
+					message: '',
+					age: 18,
+					name: '',
+				},
+			})
+		</script>
+	</body>
+</html>

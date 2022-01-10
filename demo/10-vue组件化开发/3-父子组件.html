@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- 开发环境vue -->
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+		<!-- 生产环境vue -->
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+	</head>
+	<body>
+		<!-- 
+		 注意：父子组件的注册问题
+			子组件注册到父组件中，只能在父组件中使用，不能在全局进行使用；
+			如果要在全局或者局部再次使用的话，需要将子组件再次注册到全局或者在局部进行注册
+			
+			也就是说下面cpn1是子组件，cpn2是父组件，
+			cpn1注册到了cpn2中，那么在cpn2的template模版中可以使用cpn1的标签进行渲染
+			但是除此之外不能在其他地方再次引用cpn1进行渲染，如果要在其他地方使用的话需要
+			再次单独注册cpn1到全局或者注册到root组件中（vue实例对象中）
+		 -->
+		
+		<div id="app">
+			<cpn2></cpn2>
+		</div>
+
+		<script type="text/javascript">
+		// 子组件
+			const cpn1 = Vue.extend({
+				template: `
+			<div>
+				<h1>content1<h1>
+			</div>
+			`,
+			});
+			
+			// 父组件
+			const cpn2 = Vue.extend({
+				template: `
+			<div>
+				<h1>content2<h1>
+				<cpn1></cpn1>
+			</div>
+			`,
+			components:{
+				cpn1: cpn1,
+			}
+			});
+			
+			// root组件，vue对象也可以看成一个组件
+			const app = new Vue({
+				el: '#app',
+				data: {
+					message: '',
+				},
+				methods: {
+					name: function() {
+
+					}
+				},
+				// 局部组册父组件
+				components: {
+					cpn2: cpn2,
+				}
+			})
+		</script>
+	</body>
+</html>
