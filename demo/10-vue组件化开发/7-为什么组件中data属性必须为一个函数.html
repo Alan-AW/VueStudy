@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- 开发环境vue -->
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+		<!-- 生产环境vue -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script> -->
+	</head>
+	<body>
+		<!-- 
+		 组件中data必须是一个对象？
+			因为组件是可以复用的，在组件的data中直接定义一个对象的话，在不同的页面中复用的地方，使用到了这个组件的时候，
+			data返回给交互页面的数据他们在内存中的地址是一样的。一旦发生改变，那么会引起连锁反应，可能造成非常严重的后果。
+			如果非要实现连锁反应的话，可以在外部定义一个常量然后再在data函数中进行返回。但是一般不这么干，除非，，，
+		 -->
+		
+		<div id="app">
+			<cpn></cpn>
+			<cpn></cpn>
+		</div>
+
+		<template id="template">
+			<div>
+				<p>{{count}}</p>
+				<button type="button" @click="increment">+</button>
+				<button type="button" @click="decrement">-</button>
+			</div>
+		</template>
+
+		<script type="text/javascript">
+			const app = new Vue({
+				el: '#app',
+				components: {
+					'cpn': {
+						template: '#template',
+						data() {
+							let countObj = {
+								count: 0,
+							};
+							return countObj;
+						},
+						methods: {
+							increment() {
+								this.count++;
+							},
+							decrement() {
+								if (this.count > 0) {
+									this.count--;
+								}
+							}
+						}
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

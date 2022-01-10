@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- 开发环境vue -->
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+		<!-- 生产环境vue -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script> -->
+	</head>
+	<body>
+		<!-- 组件中不能直接访问Vue实例中的数据；const app = new Vue({}) -- 无法访问
+					即使能访问，如果将所有的数据都放在vue实例中，那就会变得非常臃肿。
+					所以Vue组件应该有一个保存数据的地方；
+				
+				组件中的数据应该在注册的时候传入一个data属性(也有methods等属性)，
+					该参数!!必须!!为一个函数，且要返回一个对象,
+					在这个对象内部保存了组件需要用到的数据；
+		 -->
+
+		<div id="app">
+			<cpn></cpn>
+		</div>
+
+		<template id="cpn">
+			<div>
+				<h1>{{title}}</h1>
+				<h2>{{content}}</h2>
+			</div>
+		</template>
+
+		<script type="text/javascript">
+			const app = new Vue({
+				el: '#app',
+				components: {
+					'cpn': {
+						template: '#cpn',
+						// 组件中存储数据的function
+						data() {
+							return {
+								'title': '标题啊',
+								'content': '内容啊'
+							}
+						}
+					},
+				}
+			});
+		</script>
+	</body>
+</html>
