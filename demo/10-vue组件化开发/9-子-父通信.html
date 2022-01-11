@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- 开发环境vue -->
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+		<!-- 生产环境vue -->
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+	</head>
+	<body>
+		<!-- 
+		 父子组件的通信，自定义事件实现子组件往父组件传递数据。
+		 流程：
+			在子组件中通过 $emit() 来发射一个事件
+			在父组件中通过 v-on 来监听子组件发射的事件
+		参数：
+			$emit('事件名称', 其他参数)
+		注意：
+			原生解析同样不建议使用驼峰命名法，会找不到参数或者methods；
+			脚手架是可以解析驼峰的；
+		 -->
+
+		<div id="app">
+			<!-- 父组件监听子组件的自定义事件 -->
+			<cpn @btnclick="cpnclick"></cpn>
+		</div>
+
+		<template id="cpn">
+			<div>
+				<button v-for="item in category" @click="btnclick(item)">{{item.name}}</button>
+			</div>
+		</template>
+
+		<script type="text/javascript">
+			const cpn = {
+				template: '#cpn',
+				data() {
+					return {
+						category: [
+							{id: 1,name: '手机'},
+							{id: 2,name: '母婴'},
+							{id: 3,name: '箱包'},
+							{id: 4,name: '数码'},
+						]
+					}
+				},
+				methods: {
+					btnclick(item) {
+						// 发射一个事件(自定义事件)
+						this.$emit('btnclick', item);
+					}
+				}
+			}
+
+			const app = new Vue({
+				el: '#app',
+				data: {
+					title: '标题哦',
+					content: '内容哦',
+				},
+				components: {
+					cpn
+				},
+				methods: {
+					cpnclick(item) {
+						console.log('子组件发射了事件', item);
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

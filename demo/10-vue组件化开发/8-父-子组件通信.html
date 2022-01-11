@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- 开发环境vue -->
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+		<!-- 生产环境vue -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script> -->
+	</head>
+	<body>
+		<!-- 
+		父子组件通信
+		
+		 子组件是不能引用父组件或者Vue实例的数据
+				但是开发中需要从上往下进行传递一些数据的，某些子组件本身不包含数据。
+			传递数据的操作：
+				1.props往子组件传递数据 -- 要注意不使用驼峰标识，如果子组件中接收参数使用了驼峰，
+					那么在传递的时候需要将大写的字母改成小写并且前面加上一个 - 号；例：cInfo => c-info.
+				2.通过自定义事件向父组件发送消息 -- $emit Events
+		 -->
+
+		<div id="app">
+			<cpn :cmovies="pmovies"></cpn>
+		</div>
+
+		<template id="template">
+			<div>
+				<h3 v-for="item in cmovies">{{item}}</h3>
+				<h4>芜湖~</h4>
+			</div>
+		</template>
+
+		<script type="text/javascript">
+			// 父传子
+			const cpn = {
+				template: '#template',
+
+				// 方式一：直接数组方式进行传递
+				// props: ['cmovies'],
+
+				// 方式二：对象类型，并且同时申明该对象的类型
+				props: {
+					cmovies: [Array, ], // 要求传递过来的数据必须是数组类型
+					/* 
+					 所有支持的类型都有：
+						String、number、boolean、Array、Object、Date、Function、Symbol
+					 */
+				},
+
+				// 方式三、可以提供一些默认值;
+				// 当页面上使用该组件的时候但是并没有传入该参数的时候就会显示默认值
+				props: {
+					cmovies: {
+						type: [Array, ], // 指定类型
+						default: '天空之城', // 默认值
+						required: true, // 是否必须传入这个参数 -- cmovies
+					}
+				}
+			}
+
+			// 根组件
+			const app = new Vue({
+				el: '#app',
+				data: {
+					pmovies: ['天空之城', '千与千寻', '红猪']
+				},
+				components: {
+					cpn
+				}
+			})
+		</script>
+	</body>
+</html>
