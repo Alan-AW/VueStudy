@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- 开发环境vue -->
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+		<!-- 生产环境vue -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script> -->
+	</head>
+	<body>
+		<!-- 实现一个需求
+					1.
+		 -->
+		<div id="app">
+			<cpn :Cnum1="Pnum1" :Cnum2="Pnum2" @num1change="num1change" @num2change="num2change" />
+		</div>
+
+		<template id="cpn">
+			<div>
+				<p>props{{Cnum1}}</p>
+				<p>data:{{Dnum1}}</p>
+				<input type="text" :value="Dnum1" @input="num1change">
+				<p>props{{Cnum2}}</p>
+				<p>data:{{Dnum2}}</p>
+				<input type="text" :value="Dnum2" @input="num2change">
+			</div>
+		</template>
+
+		<script type="text/javascript">
+			const app = new Vue({
+				el: '#app',
+				data: {
+					Pnum1: 1,
+					Pnum2: 0,
+				},
+				methods: {
+					num1change(value) {
+						this.Pnum1 = parseFloat(value);
+					},
+					num2change(value) {
+						this.Pnum2 = parseFloat(value);
+					},
+				},
+				components: {
+					cpn: {
+						template: '#cpn',
+						props: {
+							Cnum1: Number,
+							Cnum2: Number
+						},
+						data() {
+							return {
+								Dnum1: this.Cnum1,
+								Dnum2: this.Cnum2,
+							}
+						},
+						methods: {
+							num1change(event) {
+								this.Dnum1 = event.target.value;
+								this.$emit('num1change', this.Dnum1);
+								this.Dnum2 = this.Dnum1 * 100;
+								this.$emit('num2change', this.Dnum2);
+							},
+							num2change(event) {
+								this.Dnum2 = event.target.value;
+								this.$emit('num2change', this.Dnum2);
+								this.Dnum1 = this.Dnum2 / 100;
+								this.$emit('num1change', this.Dnum1);
+							},
+						}
+					},
+				}
+			});
+		</script>
+	</body>
+</html>
