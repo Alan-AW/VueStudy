@@ -9,6 +9,13 @@
 		<!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script> -->
 	</head>
 	<body>
+		
+		<!-- 
+		 watch方法可以实时监听data中的数据变化，一旦某些数据发生了改变，那么就能直接被触发该数据在watch中的同名函数，进而被自动调用。
+			也就是说data中返回的对象包含了什么数据，那么就在watch中以key为名称创建一个方法，该方法内部定义该属性值被改变时做的处理和操作。
+			所以watch属性中的函数不是随便起名字的，他是必须与data中的数据的key进行一一对应的；
+		 -->
+		
 		<div id="app">
 			<cpn :num1="pnum1" :num2="pnum2" @num1change="num1" @num2change="num2"/>
 		</div>
