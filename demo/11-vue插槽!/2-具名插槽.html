@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- 开发环境vue -->
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+		<!-- 生产环境vue -->
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+	</head>
+	<body>
+		<!-- 
+		具名插槽：
+			当子组件中预留了多个插槽位置的时候，要想插入的元素放到指定的位置进行显示的话，就需要用到插槽：
+				不能直接在子组件中进行替换；
+			使用：子组件模版中定义插槽的时候写上一个name属性；
+						使用组件的时候将插入的元素定义一个slot="插槽name"的属性即可插入到指定的插槽中去。
+			注意：模版中插槽拥有了name属性的时候，便不能被直接替换掉了。如果要使用匿名插槽的话需要重新定义一个插槽
+			示例如下：
+		 -->
+		
+		<div id="app">
+			<cpn>
+				<span slot="left">左侧</span>
+				<input type="text" name="" id="" value="" slot="center"/>
+				<button type="button" slot="right">搜索</button>
+			</cpn>
+		</div>
+
+		<template id="cpn">
+			<div>
+				<slot name="left"></slot>
+				<slot name="center"></slot>
+				<slot name="right"></slot>
+			</div>
+		</template>
+
+		<script type="text/javascript">
+			const app = new Vue({
+				el: '#app',
+				components: {
+					cpn: {
+						template: '#cpn',
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

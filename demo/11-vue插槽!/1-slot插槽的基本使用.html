@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- 开发环境vue -->
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+		<!-- 生产环境vue -->
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+	</head>
+	<body>
+		<!-- 
+		1.插槽的基本使用：<slot></slot>
+			在子组件中template模版中适合的位置插入要给slot标签即可
+		2.插槽可以有默认值：<slot><button>默认按钮</button></slot>
+			默认值是为了在多次使用子组件的时候大部分插槽位置显示同样的内容
+				只有少部分显示不同的内容的时候定义一个默认标签，有替换标签的话会被替换掉
+		3.插槽位置被插入了多个元素同样全部都会显示。
+		 -->
+
+		<div id="app">
+			<cpn><a href="#">替换成超链接</a></cpn>
+			<cpn></cpn>
+			<cpn>
+				<p>多个元素1</p>
+				<p>多个元素2</p>
+			</cpn>
+			<cpn><span>替换成span标签</span></cpn>
+		</div>
+
+		<template id="cpn">
+			<div>
+				<h3>title</h3>
+				<slot><button>默认按钮</button></slot>
+			</div>
+		</template>
+
+		<script type="text/javascript">
+			const app = new Vue({
+				el: '#app',
+				components: {
+					cpn: {
+						template: '#cpn',
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
