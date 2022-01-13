@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- 开发环境vue -->
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+		<!-- 生产环境vue -->
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+	</head>
+	<body>
+		<!-- 
+		作用域插槽：
+			父组件替换插槽的标签，但是内容由子组件提供;
+			简单点说就是父组件对子组件中默认展示的数据效果不满意的时候就可以使用这个方法；
+		使用方法：
+			1.在子组件的模版中将“可能”需要修改的内容用一个<slot>标签进行包裹；
+			2.给<slot>标签 “绑定” 一个自定义属性，名称可以随意：<slot :xxx=""></slot>;
+			3.将该自定义属性的值设置为需要展示的数据对象：
+				data() {
+					return {Planguage: ['java', 'python', 'Vue', 'c++', 'Go'],};
+				}
+				<slot :xxx="Planguage"></slot>;
+			4.在父组件中使用该子组件的时候内部写上一个<template>标签(Vue.2.5x以下的版本需要这个标签，以上可以直接div)
+			5.将该template标签加上一个固定的属性：slot-scope="slot"
+			6.最后在标签内部就能直接使用子组件传递出来的数据了：slot.xxx
+			7.slot.xxx就是子组件中传递出来的数据，可以对他进行遍历，判断等等操作；
+			8.扩展：Vue也有join方法；
+		 -->
+
+		<div id="app">
+			<h2>子组件默认展示 </h2>
+			<cpn></cpn>
+
+			<!-- 目的是获取子组件中的Planguage数据 -->
+			<h2>父组件修改子组件中展示的内容 </h2>
+			<cpn>
+				<template slot-scope="slot">
+					<span v-for="item in slot.abc">{{item}}=></span>
+					<p>{{slot.abc.join('=>')}}</p>
+				</template>
+			</cpn>
+		</div>
+
+		<template id="cpn">
+			<div>
+				<slot :abc="Planguage">
+					<ul>
+						<li v-for="item in Planguage">{{item}}</li>
+					</ul>
+				</slot>
+			</div>
+		</template>
+
+		<script type="text/javascript">
+			const app = new Vue({
+				el: '#app',
+				data: {
+					message: '',
+				},
+				components: {
+					cpn: {
+						template: '#cpn',
+						data() {
+							return {
+								Planguage: ['java', 'python', 'Vue', 'c++', 'Go'],
+							};
+						}
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

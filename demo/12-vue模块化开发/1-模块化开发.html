@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>模块化开发概念</title>
+	</head>
+	<body>
+		<h3>JavaScript原始功能</h3>
+		<pre>
+			在网页开发的早期，js制作作为一种脚本语言，做一些简单的表单验证或动画实现等，那个时候代码还是很少的。
+			那个时候的代码是怎么写的呢?直接将代码写在&lt;script&gt;标签中即可随着ajax异步请求的出现，慢慢形成了前后端的分离
+			客户端需要完成的事情越来越多，代码量也是与日俱增。
+			为了应对代码量的剧增，我们通常会将代码组织在多个js文件中，进行维护。
+			但是这种维护方式，依然不能避免一些灾难性的问题。
+		</pre>
+		<h3>为什么要有模块化</h3>
+		<pre>
+			->一开始的web前端开发都是直接将js代码写早html文件中，进行一些简单的操作，但是随着ajax移步请求的出现，慢慢形成了前后端分离。
+			1.当一个项目多人开发的时候，js文件中的变量会出现污染的情况；在开发人员一的模块中定义的变量会被开发人员二的模块中无意改掉造成无从查找的匿名BUG。
+			2.js的引用顺序也有可能带来BUG。因为这种开发方式对js的依赖是强制性的。
+			3.闭包函数解决命名冲突的问题：代码不可复用；同一个开发人员互相引用不同文件中的数据变得行不通了；
+		</pre>
+		<h3>ES5没有模块化方法，ES6自带模块化。</h3>
+		<pre>
+			&lt;script type="text/javascript"&gt;
+			// 模块化的一种简单方案
+			
+			// js文件一
+				var aa = (function(){
+					var obj = {};
+					obj.man = function man() {
+						console.log('哈哈哈');
+					};
+					obj.flag = false;
+					return obj;
+				})();
+				
+			// js文件二
+			if(obj.flag) {
+				console.log('调用成功!');
+			}
+			&lt;/script&gt;
+		</pre>
+		<h3>常见的模块化规范</h3>
+		<p>CommonJS\AMD\CMD\ES6-Modules</p>
+		<h3>了解：CommonJS</h3>
+		<pre>
+			模块化的两个核心：导出-导入
+			导出：
+			&lt;script type="text/javascript"&gt;
+			// js文件一
+				var aa = (function(){
+					var obj = {};
+					obj.man = function man() {
+						console.log('哈哈哈');
+					};
+					obj.flag = false;
+					return obj;
+				})();
+			
+			module.exports = {
+				flag,man, //ES6增强写法，实际上应该是键值对；
+			}
+			&lt;/script&gt;
+			
+			导入：
+			&lt;script type="text/javascript"&gt;
+			let {flag, man} = require('文件路径');
+			man(); // 直接使用
+			&lt;/script&gt;
+		</pre>
+	</body>
+</html>
