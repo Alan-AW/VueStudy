@@ -1,0 +1,40 @@
+一、webpack.config.js
+该配置文件如下：(目前能用到的)
+	const path = require('path');										1.导入全局path，让下面的文件配置出口动态生成绝对路径
+	
+	module.exports = {
+		entry: './src/man.js',												2.webpack打包文件入口
+		output: {
+			path: path.resolve(__dirname, 'dist'),			3.webpack打包文件出口
+			filename: 'bundle.js',											4.webpack打包文件名称
+		}
+	}
+	
+	解释：
+		1-这个path与Django的path类似，他是node的全局path。
+		2-打包文件即开发中的源文件
+		3-出口固定写法，能直接定位到当前项目所在的绝对路径
+		4-打包输出文件名
+		
+二、npm init
+		也叫初始化，在shell环境中执行该命令会生成一个package.json和package-lock.json文件
+		{
+		  "name": "meetwebpack",
+		  "version": "1.0.0",
+		  "description": "",
+		  "main": "index.js",
+		  "scripts": {
+		    "test": "echo \"Error: no test specified\" && exit 1",
+				"build": "webpack"
+		  },
+		  "author": "",
+		  "license": "ISC"
+		}
+		以上键值对均可以进行自定义值的内容，在执行  npm init  的时候；
+		手动配置一个"build": "webpack"；这个命令可以在shell环境下使用run来执行：
+			npm run build
+			他会优先到这个文件中寻找该命令，然后将其值再次在shell中执行；配合配置文件就可以不需要每次打包的时候
+			都输入文件的入口和出口了。而且有个好处就是会优先到本地去执行这个命令
+			
+		"本地"的概念是指：当前项目
+		默认情况下在shell中执行的命令都会在全局执行，并不会在"本地"执行

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- 开发环境vue -->
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+		<!-- 生产环境vue -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script> -->
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			1.在ES6的模块化开发中，要使得多个js文件中的命名不存在冲突的话，需要带每个引入js文件的script标签中加上：
+				<script src="./xx.js" type="module">< /script>
+				这样会使得每个js文件都是单独的模块，互不干扰，但是同时也失去了代码的复用性，每个文件中的数据都不能被另外的文件访问
+			2.解决：
+				如果要想别的模块能使用当前模块中的数据，就用 export 进行导出；
+				export{
+					obj1, obj2, ......
+				}
+				使用别的模块中的数据，使用 import 进行导入：
+					import {obj1, obj2} from './script.js';
+					
+			3.其他导出导入方式
+				导出变量：
+					export var/let name = 'xxj';
+					export var/let age = 18;
+					或者：
+					let name = 'xxj';
+					let age = 18
+					export{name, age}
+				导出函数/类
+					export function ex() {
+						pass
+					}
+					
+					export class Person() {
+						run() {
+							
+						}
+					}
+					
+					export class Person {
+						构造器：
+						constructor(obj1, obj2, obj3, ...) {
+							this.obj1 = obj1;
+							this.obj2 = obj2;
+							this.obj3 = obj3;
+							...
+						}
+						类方法：
+						run() {
+							pass
+						}
+					}
+				
+				导入函数/类：
+					import {ex, Person} from './script.js';
+					
+					const p = new Person()
+					
+			4.export default：
+				某些时候一个模块中的对象在导出的时候需要导入方自定义命名；
+				注意：默认的导出只能有一个对象，即单个js文件中default导出对象只能有一个，不能有多个。
+				导出：
+					export default object;
+				导入：
+					import (随意起名) from './script.js';
+					
+			5.通配符导入使用方式：
+				import * as xx from './xxx.js'
+				aa.name; aa.age; ......
+			*/
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,18 @@
+1.项目目录结构：
+	root
+		dist
+		src
+	dist目录用于存储打包之后的文件，src则是开发环境，所有的js都放在里面进行储存。	
+
+2.进行模块化开发：
+	导出：export{obj, obj1, ...};
+	导入：import {obj, obj1, ...} from './src/xxx';
+	
+3.使用webpack打包：
+	shell模式下进入root目录
+	webpack ./src/xxx.js ./dist/xxx.js
+	
+4.在index.html文件中引用dist目录中打包好的一个js文件即可
+	<script src="dist/xxx.js"></script>
+	部署上线的时候也是只需要部署这个js文件和index.html入口文件。
+	
