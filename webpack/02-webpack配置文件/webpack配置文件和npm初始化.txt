@@ -38,3 +38,13 @@
 			
 		"本地"的概念是指：当前项目
 		默认情况下在shell中执行的命令都会在全局执行，并不会在"本地"执行
+		
+		
+三、本地安装依赖包
+	进入到当前项目root下执行：
+		npm install PackageName@PackageVersion --save-dev
+	一旦在本地安装了依赖包的话在package.json文件中会自动生成当前项目依赖的配置。
+	
+	如果没有在项目中配置config文件而要使用本地依赖包的话需要定位到依赖包的具体位置再执行相关命令
+	例如：
+		root> ./webpack/ven/bin/webpack ./src/xxx.js ./dist/xxx.js
