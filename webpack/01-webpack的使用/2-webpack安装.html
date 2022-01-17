@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<pre>
+			一、webpack与node.js与npm的关系
+				使用webpack需要依赖node环境，node环境又有很多的依赖包，npm是node packge manager的缩写，也就是node包管理工具。node自带；
+			二、安装
+				1.安装node.js
+				安装教程地址：<a href="https://aurora.xcye.xyz/node.html">https://aurora.xcye.xyz/node.html</a>
+					1.nodejs目前最新的版本已经更新到v17了，在官网上下载对应的版本即可:官网点击选择：Previous Releases这里可以找到历史版本
+						<a href="https://nodejs.org/en/">node官网：https://nodejs.org/en/</a>
+						如果在win7上面安装的话，需要下载v12版本的安装文件，安装文件是  .msi  文件；
+					2.安装过程中可以自定义位置进行安装：第三步一定要选择一个!!!ADD to PATH!!!
+					3.node -v 验证是否安装成功
+					4.在安装目录中新建两个文件夹：node_cache 和 node_global
+						这是全局安装和缓存地址
+					5.然后回到cmd控制台依次执行：
+						npm config set prefix "D:\Develop\nodejs\node_global"
+						npm config set cache "D:\Develop\nodejs\node_cache"
+						上面的地址就是node_cache 和 node_global 的地址
+					6.然后运行淘宝镜像：
+						npm config set registry=http://registry.npm.taobao.org/
+					7.然后此电脑-属性-高级系统设置-环境变量-PATH
+						加入刚才安装node——global的地址，如果有多个地址的话用英文分号隔开。
+					
+				2.全局安装webpack(-g表示全局安装)
+					npm install webpack@3.6.0 -g
+				3.局部安装webpack（局部安装是开发时的依赖，项目打包后不需要继续使用）
+					--save-dev
+					npm install webpack@3.6.0 --save-dev
+				
+				指定3.6.0版本是因为CIL脚手架2.x依赖3.6.0。
+		</pre>
+	</body>
+</html>

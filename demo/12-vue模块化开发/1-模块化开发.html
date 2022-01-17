@@ -22,7 +22,7 @@
 		</pre>
 		<h3>ES5没有模块化方法，ES6自带模块化。</h3>
 		<pre>
-			&lt;script type="text/javascript"&gt;
+			<script type="text/javascript">
 			// 模块化的一种简单方案
 			
 			// js文件一
@@ -39,7 +39,7 @@
 			if(obj.flag) {
 				console.log('调用成功!');
 			}
-			&lt;/script&gt;
+			</script>;
 		</pre>
 		<h3>常见的模块化规范</h3>
 		<p>CommonJS\AMD\CMD\ES6-Modules</p>
@@ -47,7 +47,7 @@
 		<pre>
 			模块化的两个核心：导出-导入
 			导出：
-			&lt;script type="text/javascript"&gt;
+			<script type="text/javascript">
 			// js文件一
 				var aa = (function(){
 					var obj = {};
@@ -61,13 +61,13 @@
 			module.exports = {
 				flag,man, //ES6增强写法，实际上应该是键值对；
 			}
-			&lt;/script&gt;
+			</script>
 			
 			导入：
-			&lt;script type="text/javascript"&gt;
+			<script type="text/javascript">
 			let {flag, man} = require('文件路径');
 			man(); // 直接使用
-			&lt;/script&gt;
+			</script>
 		</pre>
 	</body>
 </html>
