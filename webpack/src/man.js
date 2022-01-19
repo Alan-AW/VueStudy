@@ -1,8 +1,4 @@
-// const {add} = require('./muth.js');
-import {add} from './js/muth.js';
-// 依赖css文件
-import css from './css/norme.css';
-// require('./css/norme');
+import {add} from './js/test.js';
+import {css} from './css/test.css';
 
-
-console.log(add(10, 20));
+add('测试文字!');

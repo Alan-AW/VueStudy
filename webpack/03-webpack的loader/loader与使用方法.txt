@@ -7,11 +7,28 @@ loader是webpack中一个非常核心的概念：
 	1.通过npm安装需要使用到的loader
 	2.在webpack.config.js中的module关键字下进行配置
 	3.webpack中文文档：
-		
 		https://www.webpackjs.com
+	4.完整配置：
+		module: {
+			rules: [{
+					test: /\.css$/,
+					use: ['style-loader', 'css-loader']
+				},
+				{
+					test: /\.(png|jpg|gif)$/,
+					use: [{
+						loader: 'url-loader',
+						options: {
+							limit: 8192
+						}
+					}, ]
+				}
+			]
+		}
 
 loader库："多个loader库的加载顺序是从右往左的顺序"
 	1.css样式：
+		npm install --save-dev css-loader
 		style-loader: 将解析出来的css文件添加进DOM中
 		css-loader: 只负责加载css文件
 		
@@ -36,7 +53,7 @@ loader库："多个loader库的加载顺序是从右往左的顺序"
 		npm install --save-dev url-loader
 		
 		当加载的图片文件小于limit时，会将文件编译成base64的文件
-		当加载的图片文静啊大于limit时，会调用file-loader进行加载，所以需要安装一下file-loader
+		当加载的图片文件大于limit时，会调用file-loader进行加载，所以需要安装一下file-loader
 			npm install --save-dev file-loader
 		
 		{
