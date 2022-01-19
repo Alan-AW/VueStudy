@@ -1,0 +1,79 @@
+loader是webpack中一个非常核心的概念：
+	webpack主要是用来处理js代码，并且还会自动处理js之间的依赖关系，
+	但是在开发中不仅有js还有css、图片、将ES6转换成ES5代码，将scss、less转换成css等
+	对于webpack本身的能力来说是不支持的，所以需要使用扩展loader
+	
+使用方法：
+	1.通过npm安装需要使用到的loader
+	2.在webpack.config.js中的module关键字下进行配置
+	3.webpack中文文档：
+		
+		https://www.webpackjs.com
+
+loader库："多个loader库的加载顺序是从右往左的顺序"
+	1.css样式：
+		style-loader: 将解析出来的css文件添加进DOM中
+		css-loader: 只负责加载css文件
+		
+	2.less样式：
+		npm --save-dev less-loader less
+		less配置：
+		{
+			test: /\.css$/,
+			use: ['style-loader', 'css-loader']
+		},
+		{
+			test: /\.less$/,
+			use: [{
+				loader: "style-loader" // creates style nodes from JS strings
+			}, {
+				loader: "css-loader" // translates CSS into CommonJS
+			}, {
+				loader: "less-loader" // compiles Less to CSS
+			}
+	
+	3.图片（文件loader）loader：
+		npm install --save-dev url-loader
+		
+		当加载的图片文件小于limit时，会将文件编译成base64的文件
+		当加载的图片文静啊大于limit时，会调用file-loader进行加载，所以需要安装一下file-loader
+			npm install --save-dev file-loader
+		
+		{
+			test: /\.(png|jpg|gif|webp)$/,
+			use: [
+				{
+					loader: 'url-loader',
+					options: {
+						limit: 8192
+					},
+		}
+		
+	4.图片文件超过limit产生的问题：
+		4.1-使用file-loader加载的文件在打包之后会将文件哈希改名之后放到dist文件夹下，
+				但是开发的时候加载的路径依然是原路径进行加载的，这样就会导致打包之后对应的图片文件找不到
+		4.2-解决办法：
+			在webpack.config.js配置文件中的output关键字中配置一个配置项：
+				publicPath: 'dist/'
+			这样在打包之后程序会默认在打包之后的文件加载路径前面拼接一个这个dist路径。
+			
+	5.图片文件处理-修改文件名称和打包路径
+		5.1 webpack打包的时候会将图片的名字生成非常长的hash值，但是在开发使用过程中对文件名是有一点的要求的。
+				比如房到统一的文件夹，同时也要防止重复...
+		5.2 解决办法：
+			在options 里面 添加以下配置
+			name: 'img/[name].[hash:8].[ext]',  	
+				
+			img:										// 打包的文件到哪里
+			name: 	  							// 获取文件原来的名字放在最前面进行拼接
+			hash:   								// 防止文件名冲突保留8位hash
+			ext:   									// 使用原来的扩展名（extention）
+		5.3 以上配置任然无法显示出图片文件，因为图片的路径不正确：
+				默认情况下webpack会将生成的路径直接返回，但是整个程序是打包在dist路径下的
+				所以需在路径下再添加一个dist/,也就是上面4.2中的配置
+
+webpack3.6.0适配css-loader和style-loader的问题
+	如果报错了先卸载这两个loader=>npm uninstall css-loader\style-loader
+	默认安装的是最新版本的两个loader，适配可以指定安装：
+		css-loader@2.0.2
+		style-loader@2.0.0
