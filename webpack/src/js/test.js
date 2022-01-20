@@ -1,7 +1,7 @@
-function add(data) {
-	alert(data);
+function testFunc(data) {
+	return data;
 }
 
 export {
-	add,
+	testFunc,
 }

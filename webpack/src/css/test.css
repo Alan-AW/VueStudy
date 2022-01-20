@@ -1,4 +1,5 @@
 body {
-	background-color: #FF0000;
-	color: #00FFFF;
+	background-color: whitesmoke;
+	/*background: url("../img/jp.jpg");  !* 打包文件还有待解决 *!*/
+	color: #000;
 }

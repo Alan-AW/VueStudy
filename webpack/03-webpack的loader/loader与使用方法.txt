@@ -89,6 +89,22 @@ loader库："多个loader库的加载顺序是从右往左的顺序"
 				默认情况下webpack会将生成的路径直接返回，但是整个程序是打包在dist路径下的
 				所以需在路径下再添加一个dist/,也就是上面4.2中的配置
 
+    6.ES6转ES5：babel
+        npm install --save-dev babel-loader@7 babel-core babel-preset-es2015
+        npm install --save-dev babel-loader@7 babel-core babel-preset-env  -- 这种方式安装的话需要配置一个单独的配置文件
+       配置：
+        {
+          test: /\.js$/,
+          exclude: /(node_modules|bower_components)/,
+          use: {
+            loader: 'babel-loader',
+            options: {
+              presets: ['es2015']
+              // presets: ['@babel/preset-env']
+            }
+          }
+        }
+
 webpack3.6.0适配css-loader和style-loader的问题
 	如果报错了先卸载这两个loader=>npm uninstall css-loader\style-loader
 	默认安装的是最新版本的两个loader，适配可以指定安装：

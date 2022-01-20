@@ -5,7 +5,7 @@ module.exports = {
 	output: {
 		path: path.resolve(__dirname, 'dist'),
 		filename: 'bundle.js',
-		
+		publicPath: 'dist/',
 	},
 	mode: 'development',
 	module: {
@@ -15,7 +15,6 @@ module.exports = {
 					loader: 'url-loader',
 					options: {
 						limit: 8192,
-						publicPath: 'dist/',
 						name: 'img/[name].[hash:8].[ext]',
 					}
 				}]
