@@ -126,7 +126,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _js_test_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./js/test.js */ \"./src/js/test.js\");\n/* harmony import */ var _css_test_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./css/test.css */ \"./src/css/test.css\");\n\r\n\r\n\r\nconst app = new Vue({\r\n\tel: '#app',\r\n\tdata: {\r\n\t\tmessage: '',\r\n\t},\r\n\tmethods: {\r\n\t\tclickMe() {\r\n\t\t\tthis.message = (0,_js_test_js__WEBPACK_IMPORTED_MODULE_0__.testFunc)('点击了什么？');\r\n\t\t}\r\n\t}\r\n})\n\n//# sourceURL=webpack://meetwebpack/./src/man.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _js_test_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./js/test.js */ \"./src/js/test.js\");\n/* harmony import */ var _css_test_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./css/test.css */ \"./src/css/test.css\");\n\r\n\r\n\r\nnew Vue({\r\n\tel: '#app',\r\n\tdata: {\r\n\t\tmessage: 'default text content',\r\n\t},\r\n\tmethods: {\r\n\t\tclickMe() {\r\n\t\t\tthis.message = (0,_js_test_js__WEBPACK_IMPORTED_MODULE_0__.testFunc)('点击了什么？');\r\n\t\t}\r\n\t}\r\n})\n\n//# sourceURL=webpack://meetwebpack/./src/man.js?");
 
 /***/ })
 

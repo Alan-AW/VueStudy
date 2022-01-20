@@ -1,10 +1,10 @@
 import {testFunc} from './js/test.js';
 import {css} from './css/test.css';
 
-const app = new Vue({
+new Vue({
 	el: '#app',
 	data: {
-		message: '',
+		message: 'default text content',
 	},
 	methods: {
 		clickMe() {

@@ -1,0 +1,11 @@
+在webpack中配置vue：
+    1.进入项目文件夹
+    2.执行: npm install --save vue
+    3.在需要使用vue的地方导入vue: import vue from 'vue'
+    3.在webpack.config.js导出的对象中配置：
+        resolve: {
+            alias: {  // 别名
+                'vue$': 'vue/dist/vue.esm.js'
+            }
+        },
+    4.开发业务
