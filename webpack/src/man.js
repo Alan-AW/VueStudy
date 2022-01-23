@@ -1,14 +1,12 @@
-import {testFunc} from './js/test.js';
 import {css} from './css/test.css';
+import Vue from 'vue';
+import temp from './vue/appTemp'
+// import temp from './vue/appTemp.vue';
 
 new Vue({
 	el: '#app',
-	data: {
-		message: 'default text content',
-	},
-	methods: {
-		clickMe() {
-			this.message = testFunc('点击了什么？');
-		}
+	template: '<temp/>',
+	components: {
+		temp,
 	}
 })
