@@ -16,6 +16,15 @@ Vue CLI2初始化项目
 vue CLI3初始化项目
     vue create my-project
 
+！！！！！！！！！！！注意：！！！！！！！！！
+如果使用管理员cmd提示：PowerShell：因为在此系统上禁止运行脚本......
+解决方法使用以下命令更改执行模式，即可
+进入C:\Windows\System32\WindowsPowerShell\v1.0目录，找到powershell.exe文件。
+右键该文件，以管理员权限执行。
+执行  set-ExecutionPolicy RemoteSigned  -->输入y --> 回车。
+继续创建项目即可。
+！！！！！！！！！！！！！！！！！！！！！！！
+
 初始化项目流程：
     1.项目名称
     2.项目描述
