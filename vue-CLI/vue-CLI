@@ -1,0 +1,28 @@
+什么是Vue-CLI：
+    CLI俗称脚手架，是在开发大型项目时帮助我们代码的目录结构，项目结构和部署、热加载、代码单元测试等事情。
+CLI是什么意思：
+    CLI是Command-Line Interface，翻译为命令行界面，俗称脚手架
+    Vue CLI是一个官方发布的vue.js项目脚手架
+    使用Vue-CLI可以快速搭建Vue开发环境以及对应的webpack配置
+Vue CLI使用前提 -- Node.js
+安装Vue脚手架
+    npm install -g @vue/cli
+    OR
+    yarn global add @vue/cli
+拉取cli2的模版
+    npm install -g @vue/cli-init
+Vue CLI2初始化项目
+    vue init webpack my-project
+vue CLI3初始化项目
+    vue create my-project
+
+初始化项目流程：
+    1.项目名称
+    2.项目描述
+    3.开发者信息--默认会读取全局gitconfig配置信息
+    4.Vuebuild--runtime（后期更改）
+    5.Vue-router--路由系统
+    6.ESLint--检测代码规范（一般不用）
+    7.unit tests--单元测试（no）
+    8.e2e测试--no
+    9.npm或者yarn均可
