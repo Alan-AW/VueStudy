@@ -1,0 +1,26 @@
+这两种模式的区别只在man.js文件中，项目初始化的时候自动生成的man.js中对app的使用方式不一样：
+    runtimecompiler:
+        new Vue({
+            el: '#app',
+            template: '<app/>',
+            components: {app}
+        })
+
+    runtime-only:
+        new Vue({
+            el: '#app',
+            render: function (h) {
+                return h(app),
+            }
+        )}
+
+本质上的区别见  vue程序运行过程.png
+runtimecompiler:
+    template->ast->render->virtual dom(真实DOM)->->UI
+
+runtime-only:
+    render->vdom(真实DOM)->UI
+
+使用runtime-only优点：
+    1.性能更高
+    2.代码量更少

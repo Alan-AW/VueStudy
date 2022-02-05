@@ -1,0 +1,30 @@
+vue-cli 3与2版本有很大区别
+    vue-cli 3是基于webpack 4打造，vue-cli 2还是 webapck 3
+    vue-cli 3的设计原则是“0配置”，移除的配置文件根目录下的，build和config等目录
+    vue-cli 3提供了vue ui命令，提供了可视化配置，更加人性化
+    移除了static文件夹，新增了public文件夹，并且index.html移动到public中
+
+CLI3创建项目流程
+    1.default默认选项，除了基础配置之外还有两个配置：babel、eslint
+    2.手动选择、手动选择这里可以自主选择很多配置
+        1.babel     // ES6转5
+        2.typescript  // es超级，类似Java
+        3.p w a        // 更加先进的APP，具有推送通知等很多丰富的功能
+        4.router        // 前端路由
+        5.vuex          // vuex
+        6.css pre-processors  // css预处理
+        7.linter        // 代码规范检测
+        8.unit testing  // 单元测试
+        9.e2e testing   // 端到端测试
+    手动选择空格选中和取消
+    3.选择配置文件的放置关系
+        独立放置
+        集成到package.json文件中
+    4.save this as a preset for future projects？
+        刚才的配置是否需要单独保存为一个项目，在下一次创建项目的时候会增加一个配置选项，不再是default和手动模式
+    5.如果第四步选择了保存，那么起一个名字即可。
+    6.最后选择安装npm或者yarn管理
+    7.如何删除保存的很多的配置：
+        c盘，用户。在git配置文件夹下有一个.vuerc文件，删除里面的配置项
+        rc文件：run command，运行终端的意思
+    8.默认会生成一个.git文件。酌情考虑是否留住
