@@ -1,0 +1,35 @@
+嵌套路由：
+  嵌套路由类似后端的路由分发；实现步骤：
+    1.创建对应的子组件，
+    2.在路由映射中配置对应的子路由
+    3.在对应的组件内部使用<router-view></router-view>标签。
+
+路由配置(子路由中不需要加 / )
+
+const Home = () => import('home_path');
+const HomeNews = () => import('path1');
+const HomeMesg = () => import('path2');
+
+const routers = [
+  {
+    path: '/home',
+    component: Home,
+    children: [
+      // 默认路由
+      {
+        path: '',
+        redirect: 'news',
+      },
+
+      // 子路由
+      {
+        path: 'news',
+        component: HomeNews,
+      },
+      {
+        path: 'msg',
+        component: HomeMesg,
+      },
+    ]
+  }
+]

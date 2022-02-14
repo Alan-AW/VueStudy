@@ -1,0 +1,61 @@
+路由的懒加载官方解释：
+  当打包构建应用时，js包会变得非常大，影响页面加载。
+  如果将不同路由对应的组件分割成不同的代码块，然后当路由被访问的时候才加载对应组件，这样就非常高效了。
+
+将每一个路由对应的组件都单独打包成一个js代码块，
+当用户访问某个路由的时候再加载对应的组件。
+
+懒加载效果：(原理:使用箭头函数)
+router.js文件中：
+
+___________________________________________
+规范写法
+
+Vue.use(VueRouter)
+
+const Home = () => import(../component/Home);
+const About = () => import('../component/About');
+
+const routers = [
+  {
+    path: 'home',
+    component: Home,
+  },
+  {
+    path: 'about',
+    component: About,
+  }
+]
+
+const router = new VueRouter({
+  routers,
+  model: 'history',
+})
+
+export default router;
+
+
+___________________________________________
+也可以直接写在组件后面
+
+Vue.use(VueRouter)
+
+const routers = [
+  {
+    path: 'home',
+    component: () => import('../component/Home')
+  },
+  {
+    path: 'about',
+    component: () => import('../component/About')
+  }
+]
+
+const router = new VueRouter({
+  routers,
+  model: 'history',
+})
+
+export default router;
+
+

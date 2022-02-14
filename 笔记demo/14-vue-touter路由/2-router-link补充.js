@@ -6,7 +6,7 @@
 // 其他属性：replace
 // 		router-link默认使用的historyState，导致在多个link之间切换的时候，浏览器中的前进/返回箭头可点击，
 			// 添加一个replace属性之后就将router-link的模式改为了replaceState，无法点击前进/返回按钮了
-<router-link to='home' tag="li" replace>
+<router-link to='home' tag="li" replace></router-link>
 
 // 其他属性：class
 //    当某个router-link被点击的时候，会自动生成一个属性：router-link-active,如果对该点击的元素设置样式的话
@@ -17,9 +17,9 @@
 	}
 </style>
 
-// 其他属性：active-class
+// 其他属性:active-class
 // 		 修改上面的默认class属性
-<router-link to='home' tag="li" replace active-class="active">
+<router-link to='home' tag="li" replace active-class="active"></router-link>
 
 // 在路由映射关系中，批量统一修改active-class属性
 const router = new VueRouter({
