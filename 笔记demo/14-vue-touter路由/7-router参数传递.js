@@ -9,7 +9,7 @@
 		传递方式：对象中使用query的key作为传递
 		传递后的路径：/user?id=123, /user?id=name
 		
-	
+	__________________________________________________________________
 	使用方法：
 		params方式直接拼接参数即可：
 			<router-link to="/user/username"></router-link>
@@ -18,11 +18,12 @@
 			
 		query方式：
 			<router-link v-bind:to="{path: '/user', query: {name: 'aa', age: 18, height: 1.65}}"></router-link>
-		
+	__________________________________________________________________
 	获取方式：两种方式一样的：
 		$route.params.xxx
 		$route.query.xxx
 		
+	__________________________________________________________________
 	通过代码跳转
 		this.$router.path('/user');
 		this.$router.path({
