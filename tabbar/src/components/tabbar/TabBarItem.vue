@@ -1,13 +1,21 @@
 <template>
-  <slot name="item-icon"></slot>
-  <slot name="item-category"></slot>
-  <slot name="item-car"></slot>
-  <slot name="item-profile"></slot>
+  <div class="tab-bar-item">
+    <slot v-if="!isActive" name="item-icon"></slot>
+    <slot v-else name="item-icon-active"></slot>
+    <div :class="{active: isActive}">
+        <slot name="item-text"></slot>
+    </div>
+  </div>
 </template>
 
 <script>
   export default {
-    name: 'TabBarItem'
+    name: 'TabBarItem',
+    data() {
+      return {
+        isActive: false;
+      }
+    }
   }
 </script>
 
@@ -28,5 +36,9 @@
     margin-top: 0.1875rem;
     vertical-align: middle;
     margin-bottom: 0.125rem;
+  }
+
+  .active {
+    color: #FF0000;
   }
 </style>
