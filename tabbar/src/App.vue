@@ -6,7 +6,7 @@
 </template>
 
 <script>
-  import ManTabBar from './components/ManTabBar.vue'
+  import ManTabBar from '@/components/ManTabBar.vue'
   export default {
     name: 'App',
     components: {
