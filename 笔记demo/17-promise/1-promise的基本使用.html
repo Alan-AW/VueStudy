@@ -58,13 +58,15 @@
 					// 第三次请求处理
 					console.log('梁!');
 				}).catch((data) => {
+					// 第三次请求失败处理
 					console.log(data);
 				})
 			}).catch((data) => {
+				// 第二次请求失败处理
 				console.log(data);
 			})
 		}).catch((data) => {
-			// 第一次请求失败的处理方法
+			// 第一次请求失败的处理
 			console.log(data);
 		})
 		</script>
