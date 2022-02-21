@@ -1,0 +1,33 @@
+getters基本使用：
+    1.当state中的数据需要进行一些变化之后再在多个组件进行使用的话，可以将这个变化方法定义到getters中；
+    2.getters本身还可以作为参数进行传递;
+    3.getters本身不接受参数的传递，但是可以返回一个方法，来接收参数进行处理
+
+new Vuex({
+    state: {
+        student: [{id: 1, name: 'kobe', age: 18},
+        {id: 2, name: 'aaa', age: 22},
+        {id: 3, name: 'ymin', age: 30},
+        {id: 4, name: 'james', age: 16},]
+    },
+    getters: {
+        // 1.定义数据处理方法
+        more20msg(state) {
+            return state.student.filter(s => s.age > 20);
+        },
+
+        // 2.getters本身可以作为参数使用
+        getLength(state, getters) {
+            return getters.more20stu.length;
+        },
+        // 3.getters返回方法接收/传递参数
+        moreAgeStu(state) {
+            return num => state.student.filter(s => s.age > num);
+        }
+    },
+})
+
+调用该处理后的数据：
+    1.$store.getters.more20stu
+    2.$store.getters.getLength
+    3.$store.getters.moreAgeStu(18)
