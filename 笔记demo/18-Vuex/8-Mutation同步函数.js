@@ -1,0 +1,3 @@
+通常情况下,Vuex要求我们Mutation中的方法必须是同步方法.
+  主要的原因是当我们使用devtools时, 可以devtools可以帮助我们捕捉mutation的快照
+  但是如果是异步操作,那么devtools将不能很好的追踪这个操作什么时候会被完成;

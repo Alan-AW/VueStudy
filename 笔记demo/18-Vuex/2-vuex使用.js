@@ -20,15 +20,23 @@ const store = new Vuex.Store({
 	},
 
 	mutations: {  // 定义对公共状态的修改方法
-		add() {
+		add(state) {
 			counter++;
 		},
-		down() {
+		down(state) {
 			counter--;
 		}
 	},
-	actions: {},  // 异步操作处理
-	getters: {},  // 类似计算属性
+	actions: {
+		function (context) {
+			pass
+		}
+	},  // 异步操作处理
+	getters: {
+		function (state) {
+			pass
+		}
+	},  // 类似计算属性
 	modules: {}  // 模块化进行保存一些状态数据
 })
 
