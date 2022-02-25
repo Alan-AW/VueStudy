@@ -1,0 +1,23 @@
+/*
+* 网络模块的选择
+* */
+一: 传统Ajax是基于XMLHttpRequest(XHR)
+	配置和调用方式混乱
+	编码非常蛋疼
+二: jQuery-Ajax
+	相比原生Ajax使用非常方便,但是仅仅为了一个网络请求就使用重量级框架不合理
+	而且在Vue开发过程中不需要用到jQuery
+三: Vue-resource
+	不再更新和维护
+四: axios ----> ajax i/o system(Vue作者推荐)
+    在浏览器中发送XMLHttpRequests请求
+    在node.js 中发送http请求
+    支持Promise API
+    拦截请求和响应
+    转换请求和响应数据
+    等等
+五: jsonp:为了解决跨域问题的
+	原理:
+	核心就在于通过<script src=""></script>标签的src来请求数据
+	因为跨域之间是不能直接请求数据的,src请求到的数据当作一个函数来执行,并且执行的过程中传入我们需要的json
+	所以封装jsonp的核心就在于我们监听windows上的jsonp进行回调时的名称
