@@ -39,3 +39,23 @@ bscroll.on('pullingUp', () => {
     bscroll.finishPullUp();  // 必须调用一次这个方法才能再次使用上拉加载
   }, 2000);
 })
+
+
+// 完整使用：
+export default {
+  mounted() {
+    this.scroll = new BScroll(this.$refs.wrapper, {
+      probeType: 3, // 1-1都是不能实时监听滚动的；2只监听手指的滚动；3只要是滚动全都监听
+      click: true, // (新版已经可以监听了)默认阻止浏览器的点击事件，必须设置为true
+      pullUpLoad: true, // 上拉加载更多
+    });
+    // 实时监听滚动位置
+    this.scroll.on("scroll", (position) => {
+      console.log(position);
+    });
+    // 上拉加载更多
+    this.scroll.on("pullingUp", () => {
+      console.log("上拉加载更多");
+    });
+  },
+}
